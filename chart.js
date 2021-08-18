@@ -88,6 +88,7 @@ function partition(arr, start, end) {
 };
 function quickSort(arr, start, end) {
     // Base case or terminating case
+   
  
     if (start >= end) {
        
@@ -102,8 +103,9 @@ function quickSort(arr, start, end) {
     
     
     // Recursively apply the same logic to the left and right subarrays
-    setTimeout(() => { quickSort(arr, start, index - 1); quickSort(arr, index + 1, end); }, 2000);
-    
+    setTimeout(() => { quickSort(arr, start, index - 1); }, 2000);
+    setTimeout(() => { quickSort(arr, index + 1, end); }, 2000);
+    setTimeout(() => { clearPoints();}, 2100)
    
 }
 
@@ -123,11 +125,16 @@ function animate(list) {
     //console.log(list)
 }
 
-function highlight(mid_index, max_index, min_index) {
+function clearPoints() {
     colors = ["silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver", "silver"]
     data.datasets[0].pointBackgroundColor = colors
-    data.datasets[0].pointBackgroundColor[min_index] = "yellow";
-    data.datasets[0].pointBackgroundColor[mid_index] = "green";
+
+}
+
+function highlight(mid_index, max_index, min_index) {
+   
+    data.datasets[0].pointBackgroundColor[mid_index] = "yellow";
+    data.datasets[0].pointBackgroundColor[min_index] = "green";
     data.datasets[0].pointBackgroundColor[max_index] = "red";
     
     CHART.update();
